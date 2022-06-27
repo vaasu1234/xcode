@@ -6,6 +6,10 @@ import UIKit
  For variables, The Swift compiler can deduce the type by examining the default value given by you.
  */
 
+print("hello \(2+3) worlsd")
+print("2+3 = \(2+3+9)")
+
+
 let constant = 10
 var y = 10
 var x = y + constant
@@ -108,6 +112,8 @@ jobTitle = "iOS Developer"
 if jobTitle != nil {
     let message = "Your job title is " + jobTitle!
     print(message)
+} else {
+    print("else")
 }
 
 if let jobTitleWithValue = jobTitle {
@@ -122,3 +128,169 @@ if let jobTitle = jobTitle {
 
 }
 
+//variable
+var arr = ["vasu", "viraj", "Megha"]
+print(arr[1])
+arr.shuffle()
+print(arr[1])
+
+//let is used for constant
+let stockName = "Apple"
+
+let stockSymbol = "AAPL"
+
+let randomNumber = Int.random(in: 1...12)
+print(randomNumber)
+
+let randomNumber2 = Int.random(in: 1..<5)
+let ranomNumber3 = Float.random(in: 1...5)
+
+let password = "Davinci" + "1234"
+
+divide(n1:10, n2:4)
+
+func divide(n1: Int, n2: Int) {
+  let decimalN1 = Double(n1)
+  let decimalN2 = Double(n2)
+  print(decimalN1 / decimalN2)
+}
+
+
+// three dots to create a range
+let hardness = 5
+
+switch hardness {
+case 1...3:
+    print("<3")
+case 4...5:
+    print(">3")
+default:
+    print("3")
+}
+
+//optionals - use ?? or !
+var player1UserName: String? = "virat"
+//this is not an optional value
+var player2UserName = player1UserName!
+player1UserName = nil
+
+//triggers crash
+//print(player1UserName!)
+
+if(player1UserName != nil){
+    print(player1UserName!)
+}
+
+
+let array = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+
+print(array[0][2])
+
+let quiz = [
+    ["Four + Two is equal to Six", "True"],
+    ["Five - Three is greater than One", "True"]
+]
+
+print(quiz[1][0])
+
+struct Town {
+    let name = "Angelaland"
+    var citizens = ["Angela"]
+    var resources = ["Grain":100, "Ore":42, "Wool":75]
+    
+    func fortify(){
+        print("Defences increased")
+    }
+}
+
+var myTown = Town()
+print(myTown.citizens)
+print(myTown.resources["Grain"]!)
+myTown.citizens.append("Keanu Reeves")
+
+myTown.fortify()
+
+
+//struct self is immutable.
+struct Towns {
+    let name: String
+    var citizens: [String]
+    var resources:[String:Int]
+    
+    init(name:String, people:[String], stats:[String: Int]){
+        self.name = name
+        citizens = people
+        resources = stats
+    }
+    
+    func fortify(){
+        print("Defences increased!")
+    }
+    
+    mutating func harvestRice() {
+        //changes property within the struct.
+        self.resources["Rice"] = 100
+    }
+}
+
+
+var anotherTown = Towns(name: "Moderna", people: ["Adam", "Dexter"], stats:["Coconuts":100])
+
+print(anotherTown.citizens)
+anotherTown.citizens.append("Wilson")
+
+var someValue:Int!
+let defaultValue = 5
+let unwrappedValue:Int = someValue ?? defaultValue
+print(unwrappedValue)
+
+func getMilk (money: Int) -> Int {
+    let change = money-2
+    return change
+}
+
+var change = getMilk(money:4)
+
+/*
+ Optionals
+ var bmi:Float?
+ 
+ 1. Force Unwrapping (bmi!)
+ 2. Check for nil value (bmi != nil)
+ 3. Optional Binding (if let safebmi = bmi)
+ 4. Nil Coalescing Operator bmi??default value
+ 5. Optional Chaining (optional?.property) (optiona?.method())
+ */
+
+var myOptional: String?
+
+myOptional = nil
+myOptional = "Angela"
+
+var text:String = myOptional!
+let text2: String = myOptional ?? "I am the default value"
+
+if myOptional != nil {
+    text = myOptional!
+}
+
+if let safeOptional = myOptional {
+    text = safeOptional
+}
+
+struct MyOptional {
+    var property:Int = 123
+    func method() {
+        print("I am the struct")
+    }
+}
+
+let structOptional:MyOptional?
+
+structOptional = nil
+
+print(structOptional?.property)
